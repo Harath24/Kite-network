@@ -9,10 +9,7 @@ import state from "./state/State";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App dialogsData={state.dialogsData}
-         messagesData={state.messagesData}
-         postsData={state.postsData}
-    />
+    <App state={state} />
   </React.StrictMode>,
   document.getElementById('root')
 );
