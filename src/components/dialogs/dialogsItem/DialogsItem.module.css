@@ -1,0 +1,13 @@
+.dialog a {
+    text-decoration: none;
+    color: #1357eb;
+}
+.dialog a.active {
+    color: white;
+}
+.dialog a:hover {
+    font-weight: bold;
+}
+.messages {
+
+}
