@@ -1,6 +1,6 @@
-import {rerenderEntireTree} from "../rerender";
+let rerenderEntireTree = () => {
 
-
+}
 let state = {
     dialogPage : {
         dialogsData: [
@@ -15,14 +15,16 @@ let state = {
             {id: 2, message: 'What is your name?'},
             {id: 3, message: 'Tonny!'},
             {id: 4, message: 'Fuck you Tonny!'}
-        ]
+        ],
+        newMessageText: ''
     },
     profilePage : {
         postsData: [
             {id: 1, post: 'New Post', likesCounter: 10},
             {id: 2, post: 'Second Post', likesCounter: 12},
             {id: 3, post: 'Third Post', likesCounter: 30},
-        ]
+        ],
+        newPostText : ''
     },
     sideBar :
         [{id: '2', name: 'Chika', url : 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
@@ -31,22 +33,35 @@ let state = {
         ]
 
 }
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id : 5,
-        post : postMessage,
+        post : state.profilePage.newPostText,
         likesCounter : 0
     }
     state.profilePage.postsData.push(newPost)
-    rerenderEntireTree(state)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree()
 }
-export let addNewMessage = (message) => {
+export let addNewMessage = () => {
     let newMessage = {
         id : 5,
-        message : message
+        message : state.dialogPage.newMessageText
     }
     state.dialogPage.messagesData.push(newMessage)
-    rerenderEntireTree(state)
+    state.dialogPage.newMessageText = ''
+    rerenderEntireTree()
+}
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree()
+}
+export let updateNewMessageText = (newMessage) => {
+    state.dialogPage.newMessageText = newMessage
+    rerenderEntireTree()
+}
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
 }
 
 export default state;
