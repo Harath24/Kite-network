@@ -12,11 +12,12 @@ const Dialogs = (props) => {
                                                                              key={message.id}/>)
     let newMessageElement = React.createRef();
     let addNewMessage = () => {
-        props.addNewMessage();
+        props.dispatch({type: 'ADD-NEW-MESSAGE'});
     }
     let onMessageChange = () => {
         let text = newMessageElement.current.value
-        props.updateNewMessageText(text)
+        let action = {type:'UPDATE-NEW-MESSAGE-TEXT', newMessage:text};
+        props.dispatch(action)
     }
 
     return (

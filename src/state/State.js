@@ -30,13 +30,18 @@ let store = {
                 {id: '4', name: 'Alex', url : 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg'}
             ]
     },
-    getState() {
-      return this._state
-    },
     _callSubscriber() {
         console.log('')
     },
-    addPost() {
+
+    getState() {
+      return this._state
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+
+    },
+/*    addPost() {
         let newPost = {
             id : 5,
             post : this._state.profilePage.newPostText,
@@ -45,8 +50,8 @@ let store = {
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
-    },
-    addNewMessage() {
+    },*/
+/*    addNewMessage() {
         let newMessage = {
             id : 5,
             message : this._state.dialogPage.newMessageText
@@ -54,18 +59,40 @@ let store = {
         this._state.dialogPage.messagesData.push(newMessage)
         this._state.dialogPage.newMessageText = ''
         this._callSubscriber(this._state)
-    },
-    updateNewPostText(newText) {
+    },*/
+/*    updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText
         this._callSubscriber(this._state)
-    },
-    updateNewMessageText(newMessage) {
+    },*/
+/*    updateNewMessageText(newMessage) {
         this._state.dialogPage.newMessageText = newMessage
         this._callSubscriber(this._state)
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer
-
+    },*/
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id : 5,
+                post : this._state.profilePage.newPostText,
+                likesCounter : 0
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-NEW-MESSAGE') {
+            let newMessage = {
+                id : 5,
+                message : this._state.dialogPage.newMessageText
+            }
+            this._state.dialogPage.messagesData.push(newMessage)
+            this._state.dialogPage.newMessageText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogPage.newMessageText = action.newMessage
+            this._callSubscriber(this._state)
+        }
     }
 }
 export default store;

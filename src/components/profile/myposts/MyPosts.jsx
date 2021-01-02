@@ -1,18 +1,18 @@
 import React from 'react'
 import style from './MyPosts.module.css'
 import Post from './post/Post'
-/*import {updateNewPostText} from "../../../state/State";*/
 
 const MyPosts = (props) => {
 
     let postsElements = props.postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id} key={post.id} />)
     let newPostElement = React.createRef();
     let addPost = () => {
-        props.addPost()
+        props.dispatch({type:'ADD-POST'})
     }
     let onPostChange = () => {
         let text = newPostElement.current.value
-        props.updateNewPostText(text)
+        let action = {type:'UPDATE-NEW-POST-TEXT', newText:text};
+        props.dispatch(action)
     }
     return (
       <div className={style.profile}>
