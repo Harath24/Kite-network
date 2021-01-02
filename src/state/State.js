@@ -1,4 +1,76 @@
-let rerenderEntireTree = () => {
+let store = {
+    _state: {
+        dialogPage : {
+            dialogsData: [
+                {id: '1', name: 'Leo', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4lRdbb-GfTkirwRnibu2vO_xkDv-q_ce8fA&usqp=CAU'},
+                {id: '2', name: 'Chika', url : 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
+                {id: '3', name: 'Bro', url : 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
+                {id: '4', name: 'Alex', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HvhUfcjWOFaISAirSCG2xfdfOMONoC7-FA&usqp=CAU'},
+                {id: '5', name: 'Demon', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoYg_loo5GQu9tChS6_zc24E4zgToC6-WAdQ&usqp=CAU'}
+            ],
+            messagesData: [
+                {id: 1, message: 'Hey!'},
+                {id: 2, message: 'What is your name?'},
+                {id: 3, message: 'Tonny!'},
+                {id: 4, message: 'Fuck you Tonny!'}
+            ],
+            newMessageText: ''
+        },
+        profilePage : {
+            postsData: [
+                {id: 1, post: 'New Post', likesCounter: 10},
+                {id: 2, post: 'Second Post', likesCounter: 12},
+                {id: 3, post: 'Third Post', likesCounter: 30},
+            ],
+            newPostText : ''
+        },
+        sideBar :
+            [{id: '2', name: 'Chika', url : 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
+                {id: '3', name: 'Bro', url : 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
+                {id: '4', name: 'Alex', url : 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg'}
+            ]
+    },
+    getState() {
+      return this._state
+    },
+    _callSubscriber() {
+        console.log('')
+    },
+    addPost() {
+        let newPost = {
+            id : 5,
+            post : this._state.profilePage.newPostText,
+            likesCounter : 0
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber(this._state)
+    },
+    addNewMessage() {
+        let newMessage = {
+            id : 5,
+            message : this._state.dialogPage.newMessageText
+        }
+        this._state.dialogPage.messagesData.push(newMessage)
+        this._state.dialogPage.newMessageText = ''
+        this._callSubscriber(this._state)
+    },
+    updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber(this._state)
+    },
+    updateNewMessageText(newMessage) {
+        this._state.dialogPage.newMessageText = newMessage
+        this._callSubscriber(this._state)
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+
+    }
+}
+export default store;
+
+/*let rerenderEntireTree = () => {
 
 }
 let state = {
@@ -64,4 +136,4 @@ export const subscribe = (observer) => {
     rerenderEntireTree = observer
 }
 
-export default state;
+export default state;*/

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './MyPosts.module.css'
 import Post from './post/Post'
-import {updateNewPostText} from "../../../state/State";
+/*import {updateNewPostText} from "../../../state/State";*/
 
 const MyPosts = (props) => {
 
