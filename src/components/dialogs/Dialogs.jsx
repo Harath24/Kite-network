@@ -2,6 +2,8 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogsItem from "./dialogsItem/DialogsItem";
 import Messages from "./dialogsMessages/Messages";
+import {addNewMessageActionCreator, updateNewMessageTextActionCreator} from "../../state/State";
+
 
 
 const Dialogs = (props) => {
@@ -12,12 +14,11 @@ const Dialogs = (props) => {
                                                                              key={message.id}/>)
     let newMessageElement = React.createRef();
     let addNewMessage = () => {
-        props.dispatch({type: 'ADD-NEW-MESSAGE'});
+        props.dispatch(addNewMessageActionCreator());
     }
     let onMessageChange = () => {
         let text = newMessageElement.current.value
-        let action = {type:'UPDATE-NEW-MESSAGE-TEXT', newMessage:text};
-        props.dispatch(action)
+        props.dispatch(updateNewMessageTextActionCreator(text))
     }
 
     return (
