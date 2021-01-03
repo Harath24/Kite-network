@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import profileReducer from "./profilePage";
+import dialogsReducer from "./dialogsPage";
+
 let store = {
     _state: {
         dialogPage : {
@@ -73,38 +72,11 @@ let store = {
         this._callSubscriber(this._state)
     },*/
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id : 5,
-                post : this._state.profilePage.newPostText,
-                likesCounter : 0
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-NEW-MESSAGE') {
-            let newMessage = {
-                id : 5,
-                message : this._state.dialogPage.newMessageText
-            }
-            this._state.dialogPage.messagesData.push(newMessage)
-            this._state.dialogPage.newMessageText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogPage.newMessageText = action.newMessage
-            this._callSubscriber(this._state)
-        }
+        profileReducer(this._state.profilePage, action)
+        dialogsReducer(this._state.dialogPage, action)
+        this._callSubscriber(this._state)
     }
 }
-export const addPostActionCreator = () => ({type: ADD_POST})
-
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT,
-                                                          newText:text})
-export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE})
-export const updateNewMessageTextActionCreator = (text) => ({type:UPDATE_NEW_MESSAGE_TEXT, newMessage:text})
 export default store;
 
 /*let rerenderEntireTree = () => {

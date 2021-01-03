@@ -2,7 +2,7 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogsItem from "./dialogsItem/DialogsItem";
 import Messages from "./dialogsMessages/Messages";
-import {addNewMessageActionCreator, updateNewMessageTextActionCreator} from "../../state/State";
+import {addNewMessageActionCreator, updateNewMessageTextActionCreator} from "../../state/dialogsPage";
 
 
 
@@ -12,12 +12,12 @@ const Dialogs = (props) => {
                                                                              key={dialog.id} url={dialog.url}/>)
     let messagesElements = props.dialogPage.messagesData.map(message => <Messages message={message.message} id={message.id}
                                                                              key={message.id}/>)
-    let newMessageElement = React.createRef();
+
     let addNewMessage = () => {
         props.dispatch(addNewMessageActionCreator());
     }
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value
+    let onMessageChange = (e) => {
+        let text = e.target.value
         props.dispatch(updateNewMessageTextActionCreator(text))
     }
 
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messagesElements}
-                <div><textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessageElement} placeholder="Enter your message"/></div>
+                <div><textarea onChange={onMessageChange} value={props.newMessageText} placeholder="Enter your message"/></div>
                 <div><button onClick={addNewMessage}>Send</button></div>
             </div>
 
