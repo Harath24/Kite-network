@@ -1,15 +1,32 @@
 import profileReducer from "./profilePage";
 import dialogsReducer from "./dialogsPage";
+import sidebarReducer from "./sidebarPage";
 
 let store = {
     _state: {
-        dialogPage : {
+        dialogPage: {
             dialogsData: [
-                {id: '1', name: 'Leo', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4lRdbb-GfTkirwRnibu2vO_xkDv-q_ce8fA&usqp=CAU'},
-                {id: '2', name: 'Chika', url : 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
-                {id: '3', name: 'Bro', url : 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
-                {id: '4', name: 'Alex', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HvhUfcjWOFaISAirSCG2xfdfOMONoC7-FA&usqp=CAU'},
-                {id: '5', name: 'Demon', url : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoYg_loo5GQu9tChS6_zc24E4zgToC6-WAdQ&usqp=CAU'}
+                {
+                    id: '1',
+                    name: 'Leo',
+                    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4lRdbb-GfTkirwRnibu2vO_xkDv-q_ce8fA&usqp=CAU'
+                },
+                {
+                    id: '2',
+                    name: 'Chika',
+                    url: 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'
+                },
+                {id: '3', name: 'Bro', url: 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
+                {
+                    id: '4',
+                    name: 'Alex',
+                    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HvhUfcjWOFaISAirSCG2xfdfOMONoC7-FA&usqp=CAU'
+                },
+                {
+                    id: '5',
+                    name: 'Demon',
+                    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoYg_loo5GQu9tChS6_zc24E4zgToC6-WAdQ&usqp=CAU'
+                }
             ],
             messagesData: [
                 {id: 1, message: 'Hey!'},
@@ -19,65 +36,65 @@ let store = {
             ],
             newMessageText: ''
         },
-        profilePage : {
+        profilePage: {
             postsData: [
                 {id: 1, post: 'New Post', likesCounter: 10},
                 {id: 2, post: 'Second Post', likesCounter: 12},
                 {id: 3, post: 'Third Post', likesCounter: 30},
             ],
-            newPostText : ''
+            newPostText: ''
         },
-        sideBar :
-            [{id: '2', name: 'Chika', url : 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
-                {id: '3', name: 'Bro', url : 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
-                {id: '4', name: 'Alex', url : 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg'}
+        sideBar:
+            [
+                {id: '2', name: 'Chika', url: 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'},
+                {id: '3', name: 'Bro', url: 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
+                {id: '4',name: 'Alex', url: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Poster-sized_portrait_of_Barack_Obama.jpg'}
             ]
     },
     _callSubscriber() {
         console.log('')
     },
-
     getState() {
-      return this._state
+        return this._state
     },
     subscribe(observer) {
         this._callSubscriber = observer
-
     },
-/*    addPost() {
-        let newPost = {
-            id : 5,
-            post : this._state.profilePage.newPostText,
-            likesCounter : 0
-        }
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },*/
-/*    addNewMessage() {
-        let newMessage = {
-            id : 5,
-            message : this._state.dialogPage.newMessageText
-        }
-        this._state.dialogPage.messagesData.push(newMessage)
-        this._state.dialogPage.newMessageText = ''
-        this._callSubscriber(this._state)
-    },*/
-/*    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber(this._state)
-    },*/
-/*    updateNewMessageText(newMessage) {
-        this._state.dialogPage.newMessageText = newMessage
-        this._callSubscriber(this._state)
-    },*/
+    /*    addPost() {
+            let newPost = {
+                id : 5,
+                post : this._state.profilePage.newPostText,
+                likesCounter : 0
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        },*/
+    /*    addNewMessage() {
+            let newMessage = {
+                id : 5,
+                message : this._state.dialogPage.newMessageText
+            }
+            this._state.dialogPage.messagesData.push(newMessage)
+            this._state.dialogPage.newMessageText = ''
+            this._callSubscriber(this._state)
+        },*/
+    /*    updateNewPostText(newText) {
+            this._state.profilePage.newPostText = newText
+            this._callSubscriber(this._state)
+        },*/
+    /*    updateNewMessageText(newMessage) {
+            this._state.dialogPage.newMessageText = newMessage
+            this._callSubscriber(this._state)
+        },*/
     dispatch(action) {
-        profileReducer(this._state.profilePage, action)
-        dialogsReducer(this._state.dialogPage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
+        this._state.sideBar = sidebarReducer(this._state.sideBar, action)
         this._callSubscriber(this._state)
     }
 }
-export default store;
+/*export default store;*/
 
 /*let rerenderEntireTree = () => {
 

@@ -4,7 +4,8 @@ import {NavLink} from "react-router-dom";
 import Friends from "../friends/Friends";
 
 const Navbar = (props) => {
-    let friends = props.state.map(friend => <span className={style.friend}><img className={style.friends} alt="friendsAva"
+    debugger
+    let friends = props.state.sideBar.map(friend => <span className={style.friend}><img className={style.friends} alt="friendsAva"
                                                             src={friend.url}/><a href="#s">{friend.name}</a>
                                             </span>)
     return (

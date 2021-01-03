@@ -4,7 +4,6 @@ import Post from './post/Post'
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../state/profilePage";
 
 const MyPosts = (props) => {
-
     let postsElements = props.postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id} key={post.id} />)
     let newPostElement = React.createRef();
     let addPost = () => {
