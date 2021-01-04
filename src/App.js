@@ -3,7 +3,6 @@ import './App.css';
 import Profile from './components/profile/Profile';
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
-import Dialogs from "./components/dialogs/Dialogs";
 import {Route} from 'react-router-dom'
 import News from "./components/news/News";
 import Music from "./components/music/Music";
@@ -12,21 +11,18 @@ import Friends from "./components/friends/Friends";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 
 const App = (props) => {
+
     return (
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar state={props.state.sideBar}/>
+                <Navbar />
                 <div className='app-wrapper-content'>
-                    <Route path={'/profile'} render={ () => <Profile store={props.store} />}
-
-                    />
-                    <Route path={'/dialogs'} render={ () => <DialogsContainer store={props.store}
-                    /> } />
+                    <Route path={'/profile'} render={ () => <Profile  />} />
+                    <Route path={'/dialogs'} render={ () => <DialogsContainer />} />
                     <Route path={'/news'} render={News} />
                     <Route path={'/music'} render={Music} />
                     <Route path={'/settings'} render={Settings} />
-                    <Route path={'/friends'} render={() => <Friends state={props.state.sideBar}/>} />
-
+                    <Route path={'/friends'} render={() => <Friends />} />
                 </div>
             </div>
     );

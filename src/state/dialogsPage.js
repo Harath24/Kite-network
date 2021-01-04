@@ -42,10 +42,10 @@ const dialogsReducer = (state = initialState, action) => {
             }
             state.messagesData.push(newMessage)
             state.newMessageText = ''
-            return state;
+            return Object.assign({}, state);
         case 'UPDATE-NEW-MESSAGE-TEXT':
             state.newMessageText = action.newMessage
-            return state;
+            return Object.assign({}, state);
         default:
             return state;
     }

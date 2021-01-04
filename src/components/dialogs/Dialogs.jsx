@@ -2,7 +2,7 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogsItem from "./dialogsItem/DialogsItem";
 import Messages from "./dialogsMessages/Messages";
-import {addNewMessageActionCreator, updateNewMessageTextActionCreator} from "../../state/dialogsPage";
+
 
 
 
