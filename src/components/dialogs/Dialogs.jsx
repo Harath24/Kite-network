@@ -12,13 +12,14 @@ const Dialogs = (props) => {
                                                                              key={dialog.id} url={dialog.url}/>)
     let messagesElements = props.dialogPage.messagesData.map(message => <Messages message={message.message} id={message.id}
                                                                              key={message.id}/>)
-
     let addNewMessage = () => {
-        props.dispatch(addNewMessageActionCreator());
+        //props.dispatch(addNewMessageActionCreator());
+        props.addNewMessage()
     }
     let onMessageChange = (e) => {
         let text = e.target.value
-        props.dispatch(updateNewMessageTextActionCreator(text))
+        //props.dispatch(updateNewMessageTextActionCreator(text))
+        props.onMessageChange(text)
     }
 
     return (
