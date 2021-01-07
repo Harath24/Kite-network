@@ -9,16 +9,19 @@ import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import Friends from "./components/friends/Friends";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
+import NavbarContainer from "./components/navbar/NavbarContainer";
+import UsersContainer from "./components/users/UsersContainer";
 
 const App = (props) => {
 
     return (
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar />
+                <NavbarContainer />
                 <div className='app-wrapper-content'>
                     <Route path={'/profile'} render={ () => <Profile  />} />
                     <Route path={'/dialogs'} render={ () => <DialogsContainer />} />
+                    <Route path={'/users'} render={ () => <UsersContainer />} />
                     <Route path={'/news'} render={News} />
                     <Route path={'/music'} render={Music} />
                     <Route path={'/settings'} render={Settings} />

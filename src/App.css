@@ -1,8 +1,7 @@
 .app-wrapper {
   display: grid;
-  width: 1200px;
+  width: auto;
   margin: 0 auto;
-  margin-top: 10px;
   grid-template-areas:
     'header header'
     'nav content';
