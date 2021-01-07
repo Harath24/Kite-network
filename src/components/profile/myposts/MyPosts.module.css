@@ -1,3 +1,19 @@
 .profile {
     padding: 10px;
 }
+.input > textarea {
+    margin-bottom: 1.3rem;
+    width: 300px;
+    border-radius: 2px;
+    background: #30c3f0;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    line-height: 1.3rem;
+}
+::-moz-placeholder {
+    color: #fff;
+}
+::-webkit-input-placeholder {
+    color: #fff;
+}

@@ -4,7 +4,39 @@ import DialogsItem from "./dialogsItem/DialogsItem";
 import Messages from "./dialogsMessages/Messages";
 
 
+/*class Dialogs extends React.Component{
 
+    constructor(props) {
+        super(props);
+        dialogsElements = this.props.dialogPage.dialogsData.map(dialog => <DialogsItem name={dialog.name} id={dialog.id}
+                                                                                  key={dialog.id} url={dialog.url}/>)
+        messagesElements = this.props.dialogPage.messagesData.map(message => <Messages message={message.message} id={message.id}
+                                                                                      key={message.id}/>)
+    }
+
+    addNewMessage = () => {
+        this.props.addNewMessage()}
+
+    onMessageChange = (e) => {
+        let text = e.target.value
+        this.props.onMessageChange(text)}
+
+    render() {
+        return (
+            <div className={style.dialogs}>
+                <div className={style.dialogsItem}>
+                    {this.props.dialogsElements}
+                </div>
+                <div className={style.messages}>
+                    {this.messagesElements}
+                    <div className={style.input}><textarea onChange={this.onMessageChange} value={this.props.newMessageText} placeholder="Enter your message..."/></div>
+                    <div><button onClick={this.addNewMessage}>Send</button></div>
+                </div>
+
+            </div>
+        )
+    }
+}*/
 
 const Dialogs = (props) => {
 
@@ -29,7 +61,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messagesElements}
-                <div><textarea onChange={onMessageChange} value={props.newMessageText} placeholder="Enter your message"/></div>
+                <div className={style.input}><textarea onChange={onMessageChange} value={props.newMessageText} placeholder="Enter your message..."/></div>
                 <div><button onClick={addNewMessage}>Send</button></div>
             </div>
 

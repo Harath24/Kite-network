@@ -16,5 +16,22 @@
 .app-wrapper-content img {
   width: 1000px;
 }
+button {
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  display: block;
+  border: 0;
+  border-radius: 2px;
+  font-weight: 500;
+  background: #1992BC;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+button:hover {
+  background-color: #169ccd;
+}
 
 
