@@ -13,9 +13,9 @@
   grid-area: content;
   background-color: #30c3f0;
 }
-.app-wrapper-content img {
+/*.app-wrapper-content img {
   width: 1000px;
-}
+}*/
 button {
   padding: 0.7rem 1rem;
   height: 2.7rem;
