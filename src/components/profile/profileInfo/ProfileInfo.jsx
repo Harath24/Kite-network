@@ -1,17 +1,36 @@
 import React from 'react'
 import style from './ProfileInfo.module.css'
+import Preloader from "../../common/preloader/preloader";
 
 
 const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
     return (
         <div>
             <div className={style.backgroundImage}>
             </div>
-            <div className={style.description}>
-                <img className={style.avaImg} alt='ava'
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsyMtFEP1wMKU3ywZzbDLobsR9yfB3PnHNHQ&usqp=CAU"/>
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto necessitatibus, perferendis quibusdam quidem velit voluptatibus.</span>
+            <div>
+                <div className={style.description}>
+                    <div><img className={style.avaImg} alt='ava'
+                              src={props.profile.photos.large}/>
+                    </div>
+                    <div className={style.fullName}>
+                        {props.profile.fullName}
+                    </div>
+                    <div>
+                        {props.profile.lookingForAJobDescription}
+                    </div>
+                    <div>
+                        {props.profile.lookingForAJob == true ? 'Ищу работу' : 'Работа не нужна'}
+                    </div>
+                    <div>
+                        {`${'Мои контакты: '}${props.profile.contacts.facebook}${', '}${props.profile.contacts.instagram}`}
+                    </div>
+                </div>
             </div>
+
         </div>
     )
 }

@@ -1,15 +1,17 @@
 .backgroundImage {
     background: url(https://caribbeankitecruise.com/wp-content/uploads/Duotone-Foil-Video-Infinity.jpg);
-    background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
     height: 50vh;
 }
 .description {
     padding: 10px;
 }
 .description .avaImg {
-    height: 50px;
-    width: 50px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
+}
+.fullName {
+font-size: larger;
+    font-weight: bold;
 }
