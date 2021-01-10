@@ -2,6 +2,7 @@ import React from "react";
 import style from './Users.module.css'
 import userPhoto from '../../assets/images/users.png'
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 /*const Users = (props) => {
     if (props.users.length == 0) {
@@ -57,10 +58,32 @@ let Users = (props) => {
                     <div>
                         {u.followed
                             ? <button onClick={() => {
-                                props.unFollow(u.id)
+
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': 'f6745e3b-83df-4fd3-9261-73f7be906e05'
+                                    } })
+                                    .then(response => {
+                                        if(response.data.resultCode === 0) {
+                                            props.unFollow(u.id)
+                                        }
+                                    })
+
                             }}>Unfollow</button>
                             : <button onClick={() => {
-                                props.follow(u.id)
+
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': 'f6745e3b-83df-4fd3-9261-73f7be906e05'
+                                    }
+                                })
+                                    .then(response => {
+                                        if(response.data.resultCode === 0) {
+                                            props.follow(u.id)
+                                        }
+                                    })
                             }}>Follow</button>}
                     </div>
                     <div className={style.usersInfo}>
