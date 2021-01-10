@@ -14,9 +14,14 @@
 }
 .background {
   background: url(https://www.duotonesports.com/fileadmin/user_upload/duotone_kiteboarding_kites_overview_2021_v2.jpg);
-  background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
   height: 11.8vh;
   margin: 0;
+}
+.loginBlock {
+  text-decoration: none;
+  color: white;
+}
+.loginBlock:hover {
+  background-color: #169ccd;
 }
