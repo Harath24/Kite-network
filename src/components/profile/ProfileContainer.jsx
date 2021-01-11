@@ -1,9 +1,8 @@
 import React from 'react'
 import Profile from "./Profile";
-import * as axios from "axios";
 import {connect} from "react-redux";
 import {setUserProfile, toggleIsFetching} from "../../state/profilePage";
-import {withRouter} from "react-router";
+import {Redirect, withRouter} from "react-router";
 import {usersAPI} from "../../api/api";
 
 
@@ -20,6 +19,9 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.isAuth) {
+            return <Redirect to={'/login'}/>
+        }
         return (
                 <Profile  {...this.props} profile={this.props.profile} />
 
@@ -29,7 +31,8 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     isFetching: state.profilePage.isFetching,
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
 })
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 export default connect(mapStateToProps, {setUserProfile, toggleIsFetching})(WithUrlDataContainerComponent);
