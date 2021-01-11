@@ -2,7 +2,6 @@ import React from "react";
 import style from './Users.module.css'
 import userPhoto from '../../assets/images/users.png'
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 /*const Users = (props) => {
     if (props.users.length == 0) {
@@ -57,26 +56,27 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
-                                props.toggleFollowingInProgress(true, u.id)
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                /*props.toggleFollowingInProgress(true, u.id)
                                 usersAPI.unFollowUser(u.id)
                                     .then(data => {
                                         if(data.resultCode === 0) {
                                             props.unFollow(u.id)
                                         }
                                        props.toggleFollowingInProgress(false, u.id)
-                                    })
-
+                                    })*/
+                                props.unFollow(u.id)
                             }}>Unfollow</button>
                             : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleFollowingInProgress(true, u.id)
+                                /*props.toggleFollowingInProgress(true, u.id)
                                 usersAPI.followUser(u.id)
                                     .then(data => {
                                         if(data.resultCode === 0) {
                                             props.follow(u.id)
                                         }
                                         props.toggleFollowingInProgress(false, u.id)
-                                    })
+                                    })*/
+                                props.follow(u.id)
                             }}>Follow</button>}
                     </div>
                     <div className={style.usersInfo}>
