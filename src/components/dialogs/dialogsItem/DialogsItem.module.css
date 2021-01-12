@@ -1,6 +1,6 @@
 .dialog a {
     text-decoration: none;
-    color: #1357eb;
+    color: #000;
 }
 .dialog a.active {
     color: white;

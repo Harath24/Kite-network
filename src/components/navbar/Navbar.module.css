@@ -1,12 +1,12 @@
 .nav {
   grid-area: nav;
-  background-color: #30c3f0;
+  /*background-color: #30c3f0;*/
   text-align: center;
   padding: 1rem;
 }
 .item a {
   text-decoration: none;
-  color: #1357eb;
+  color: #000;
 }
 
 .item a.active {
