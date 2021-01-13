@@ -8,7 +8,9 @@ let initialState = {
     email: null,
     login: null,
     isFetching: false,
-    isAuth: false
+    isAuth: false,
+    password: null,
+    rememberMe: false
 }
 const authReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -56,7 +56,14 @@ export const authAPI = {
                 .then(response => {
                     return response.data})
         )
-    }
+    },
+    login() {
+        return (
+            instance.get(`auth/login`)
+                .then(response => {
+                    return response.data})
+        )
+    },
 }
 
 /*export const getUsers = (currentPage, pageSize) => {

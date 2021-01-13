@@ -1,7 +1,6 @@
 import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
@@ -11,7 +10,6 @@ let initialState = {
         {id: 2, post: 'Second Post', likesCounter: 12},
         {id: 3, post: 'Third Post', likesCounter: 30}
     ],
-    newPostText: '',
     isFetching: false,
     profile: null,
     status: ""
@@ -20,9 +18,7 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD-POST':
-            return {...state, newPostText: '', postsData: [...state.postsData, {id:5, post: state.newPostText, likesCounter: 0}]};
-        case 'UPDATE-NEW-POST-TEXT':
-            return {...state, newPostText: action.newText};
+            return {...state, postsData: [...state.postsData, {id:5, post: action.newPostText, likesCounter: 0}]};
         case TOGGLE_IS_FETCHING:
             return {
                 ...state, isFetching: action.isFetching
@@ -39,8 +35,7 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const addPostAC = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText:text})
+export const addPostAC = (newPostText) => ({type: ADD_POST , newPostText})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
@@ -55,7 +50,6 @@ export const getUserProfile = (userId) => {
 }
 export const getUserStatus = (userId) => {
     return (dispatch) => {
-        debugger
         profileAPI.getStatus(userId)
             .then(response => {
                 dispatch(setUserStatus(response.data))
@@ -66,7 +60,7 @@ export const updateStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateStatus(status)
             .then(response => {
-                if(response.data.resultCode != 1 ){
+                if(response.data.resultCode !== 1 ){
                 dispatch(setUserStatus(status))
             }})
     }

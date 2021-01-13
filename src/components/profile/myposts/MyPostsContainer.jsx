@@ -1,5 +1,5 @@
 import React from 'react'
-import {addPostAC, updateNewPostTextActionCreator} from "../../../state/profilePage";
+import {addPostAC} from "../../../state/profilePage";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
@@ -23,13 +23,11 @@ let state = props.store.getState()
 let mapStateToProps = (state) => {
     return {
         postsData: state.profilePage.postsData,
-        newPostText: state.profilePage.newPostText
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => dispatch(addPostAC()),
-        onPostChange: (text) => dispatch(updateNewPostTextActionCreator(text))
+        addPost: (newPostText) => dispatch(addPostAC(newPostText)),
     }
 }
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
