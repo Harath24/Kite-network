@@ -10,7 +10,7 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
   background-image: url(https://static.scientificamerican.com/sciam/cache/file/30647AC1-B772-4607-BF3C3D43456E7103_source.jpg);
-  background-size: cover;
+  background-size: 100%;
 }
 .app-wrapper-content {
   grid-area: content;
