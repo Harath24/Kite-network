@@ -1,0 +1,18 @@
+.formControl textarea {
+    margin-bottom: 1.3rem;
+    width: 300px;
+    border-radius: 2px;
+    background: transparent;
+    border: 1px solid #555;
+    color: #000;
+    padding: 0.5rem 1rem;
+    line-height: 1.3rem;
+}
+
+.formControl.errors input,
+.formControl.errors textarea {
+    border: solid red 4px;
+}
+.formControl.errors span {
+    color: red;
+}
