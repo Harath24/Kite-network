@@ -2,11 +2,17 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {FormControl} from "../common/formsControl/FormsControl";
 import {maxLengthCreator, required} from "../../utils/validators/validator";
+import {connect} from "react-redux";
+import {login} from "../../state/authReducer";
+import {Redirect} from "react-router";
 
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+    if(props.isAuth) {
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div>
@@ -17,17 +23,17 @@ const Login = (props) => {
 }
 
 const LoginForm = (props) => {
-    const maxLength8 = maxLengthCreator(8)
+    //const maxLength18 = maxLengthCreator(18)
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field typefield='input' placeholder='Enter your login' name={'login'} component={FormControl} validate={[required, maxLength8]}/>
+                <Field typefield='input' placeholder='Enter your login' name={'email'} component={FormControl} validate={[required]}/>
             </div>
             <div>
-                <Field typefield='input' placeholder='Enter your password' name={'password'} component={FormControl} validate={[required, maxLength8]}/>
+                <Field typefield='input' placeholder='Enter your password' name={'password'} type='password' component={FormControl} validate={[required]}/>
             </div>
             <div>
-                <Field type="checkbox" typefield="checkbox" name={'rememberMe'} component={FormControl} validate={required}/>
+                <Field type="checkbox" typefield="checkbox" name={'rememberMe'} component={FormControl} /> Remember Me
             </div>
             <div>
                 <button>Log In</button>
@@ -35,7 +41,9 @@ const LoginForm = (props) => {
         </form>
     )
 }
-
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-export default Login;
+export default connect(mapStateToProps, {login}) (Login);
