@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {addPostAC} from "../../../state/profilePage";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
