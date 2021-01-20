@@ -2,12 +2,20 @@ import React from "react";
 import Users from "./Users";
 import {connect} from "react-redux";
 import {
-    follow, getUsersThunkCreator,
+    follow, requestUsers,
     setCurrentPage,
     toggleIsFetching,
     unFollow
 } from "../../state/usersReducer";
 import Preloader from "../common/preloader/preloader";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../state/usersSelectors";
 
 class UsersContainer extends React.Component {
 
@@ -52,7 +60,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
 
     return {
         users: state.usersPage.users,
@@ -61,6 +69,17 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
+    }
+}*/
+let mapStateToProps = (state) => {
+
+    return {
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
 /*let mapDispatchToProps = (dispatch) => {
@@ -87,4 +106,4 @@ let mapStateToProps = (state) => {
 }*/
 
 export default connect(mapStateToProps,
-    {follow, unFollow, setCurrentPage, toggleIsFetching, getUsersThunkCreator})(UsersContainer)
+    {follow, unFollow, setCurrentPage, toggleIsFetching, getUsersThunkCreator: requestUsers})(UsersContainer)
