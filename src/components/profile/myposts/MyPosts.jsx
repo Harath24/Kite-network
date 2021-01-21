@@ -5,7 +5,8 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validator";
 import {FormControl} from "../../common/formsControl/FormsControl";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
+    console.log('RENDER')
     let postsElements = props.postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id}
                                                           key={post.id}/>)
     /*    let newPostElement = React.createRef();
@@ -30,7 +31,7 @@ const MyPosts = (props) => {
             {postsElements}
         </div>
     )
-}
+})
 const maxLength15 = maxLengthCreator(15)
 const AddPostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
