@@ -1,5 +1,5 @@
 
-import {addPostAC} from "../../../state/profilePage";
+import {addPostAC} from "../../../state/profileReducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
