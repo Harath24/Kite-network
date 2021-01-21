@@ -27,11 +27,11 @@ class UsersContainer extends React.Component {
                 this.props.setUsers(data.items)
                 //this.props.setTotalUsersCount(data.totalCount)
             })*/
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (p) => {
-        this.props.getUsersThunkCreator(p, this.props.pageSize)
+        this.props.requestUsers(p, this.props.pageSize)
         /*this.props.setCurrentPage(p)
         this.props.toggleIsFetching(true)
         usersAPI.getUsers(p, this.props.pageSize)
@@ -106,4 +106,4 @@ let mapStateToProps = (state) => {
 }*/
 
 export default connect(mapStateToProps,
-    {follow, unFollow, setCurrentPage, toggleIsFetching, getUsersThunkCreator: requestUsers})(UsersContainer)
+    {follow, unFollow, setCurrentPage, toggleIsFetching, requestUsers: requestUsers})(UsersContainer)
