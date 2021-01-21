@@ -1,6 +1,8 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {act} from "@testing-library/react";
 
 const ADD_POST = 'ADD-POST';
+const DELETE_POST = 'DELETE_POST';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
@@ -19,6 +21,8 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD-POST':
             return {...state, postsData: [...state.postsData, {id:5, post: action.newPostText, likesCounter: 0}]};
+        case 'DELETE_POST':
+            return {...state, postsData: state.postsData.filter(p => p.id != action.id)}
         case TOGGLE_IS_FETCHING:
             return {
                 ...state, isFetching: action.isFetching
@@ -36,6 +40,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 export const addPostAC = (newPostText) => ({type: ADD_POST , newPostText})
+export const deletePost = (id) => ({type: DELETE_POST , id})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
