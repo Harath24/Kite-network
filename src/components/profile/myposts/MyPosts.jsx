@@ -3,11 +3,10 @@ import style from './MyPosts.module.css'
 import Post from './post/Post'
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validator";
-import {FormControl} from "../../common/formsControl/FormsControl";
+import {createField, FormControl} from "../../common/formsControl/FormsControl";
 
-const MyPosts = React.memo((props) => {
-    console.log('RENDER')
-    let postsElements = props.postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id}
+const MyPosts = React.memo(({addPost, postsData, ...props}) => {
+    let postsElements = postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id}
                                                           key={post.id}/>)
     /*    let newPostElement = React.createRef();
         let addPost = () => {
@@ -20,7 +19,7 @@ const MyPosts = React.memo((props) => {
             props.onPostChange(text)
         }*/
     let addNewPost = (values) => {
-        props.addPost(values.newPostText)
+        addPost(values.newPostText)
     }
     return (
         <div className={style.profile}>
@@ -33,11 +32,10 @@ const MyPosts = React.memo((props) => {
     )
 })
 const maxLength15 = maxLengthCreator(15)
-const AddPostForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+const AddPostForm = ({handleSubmit}) => {
+    return <form onSubmit={handleSubmit}>
         <div className={style.input}>
-            <Field typefield='textarea' component={FormControl} name='newPostText' validate={[required, maxLength15]}
-                   placeholder="Your news..."/>
+            {createField('textarea', "Your news...", 'newPostText', FormControl, [required, maxLength15], )}
         </div>
         <div>
             <button>Add News</button>

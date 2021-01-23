@@ -1,0 +1,10 @@
+.selectedPage {
+    font-weight: bold;
+    color: black;
+}
+.btnNumb button {
+    display: inline-block;
+    margin: 10px 2px 10px 5px;
+    padding: 0.2rem;
+    height: auto;
+}

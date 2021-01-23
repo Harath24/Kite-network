@@ -1,12 +1,11 @@
 import React from 'react'
 import style from './ProfileInfo.module.css'
 import Preloader from "../../common/preloader/preloader";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus, ...props}) => {
+    if (!profile) {
         return <Preloader/>
     }
     return (
@@ -14,20 +13,20 @@ const ProfileInfo = (props) => {
             <div>
                 <div className={style.description}>
                     <div><img className={style.avaImg} alt='ava'
-                              src={props.profile.photos.large}/>
+                              src={profile.photos.large}/>
                     </div>
                     <div className={style.fullName}>
-                        {props.profile.fullName}
+                        {profile.fullName}
                     </div>
-                    <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusHooks status={status} updateStatus={updateStatus}/>
                     <div>
-                        {props.profile.lookingForAJobDescription}
-                    </div>
-                    <div>
-                        {props.profile.lookingForAJob ? 'Ищу работу' : 'Работа не нужна'}
+                        {profile.lookingForAJobDescription}
                     </div>
                     <div>
-                        {`${'Мои контакты: '}${props.profile.contacts.facebook}${', '}${props.profile.contacts.instagram}`}
+                        {profile.lookingForAJob ? 'Ищу работу' : 'Работа не нужна'}
+                    </div>
+                    <div>
+                        {`${'Мои контакты: '}${profile.contacts.facebook}${', '}${profile.contacts.instagram}`}
                     </div>
                 </div>
             </div>
