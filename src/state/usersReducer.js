@@ -10,8 +10,8 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_FOLLOWING_PROGRESS = 'TOGGLE_FOLLOWING_PROGRESS';
 let initialState = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 49,
+    pageSize: 10,
+    totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProgress: []
@@ -82,7 +82,7 @@ export const requestUsers = (page, pageSize) => async (dispatch) => {
     let response = await usersAPI.getUsers(page, pageSize)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(response.items))
-    //dispatch(setTotalUsersCount(data.totalCount))
+    dispatch(setTotalUsersCount(response.totalCount))
 }
 
 const followUnfollowFlow = async (dispatch, userId, apiMethod, ActionCreator) => {
