@@ -1,16 +1,27 @@
 .nav {
   grid-area: nav;
-  /*background-color: #30c3f0;*/
-  text-align: center;
+  /*background-color: #00a9c6;*/
+  text-align: left;
   padding: 1rem;
+}
+.logo {
+  background-image: url(https://kitenation.com/wp-content/uploads/2019/03/duotone-squarelogo-1.jpg);
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 4rem;
+  margin: 0 0 3rem 0;
 }
 .item a {
   text-decoration: none;
-  color: #000;
+  color: #484d53;
+  font-size: 1.5rem;
+
 }
 
 .item a.active {
-  color: white;
+  color: #000000;
+  font-weight: bold;
 }
 
 .item a:hover {

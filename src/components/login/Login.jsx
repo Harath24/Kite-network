@@ -1,5 +1,5 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {createField, FormControl} from "../common/formsControl/FormsControl";
 import {required} from "../../utils/validators/validator";
 import {connect} from "react-redux";
@@ -16,7 +16,7 @@ const Login = (props) => {
         return <Redirect to={'/profile'}/>
     }
     return (
-        <div>
+        <div className={style.login}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit}/>
         </div>
@@ -24,16 +24,14 @@ const Login = (props) => {
 }
 
 const LoginForm = ({handleSubmit, error}) => {
-    //const maxLength18 = maxLengthCreator(18)
     return (
         <form onSubmit={handleSubmit}>
-            {createField('input', 'Enter your login', 'email', FormControl, [required])}
+            {error && <div className={style.formError}>{error}</div>}
+            {createField('input', 'Enter your login', 'email', FormControl, [required], {type: 'email'})}
             {createField('input', 'Enter your password', 'password', FormControl, [required], {type: 'password'})}
             {createField('checkbox', null, 'rememberMe', FormControl, null, {type: 'checkbox'}, 'Remember Me')}
-            {error && <div className={style.formError}>{error}</div>}
-
             <div>
-                <button>Log In</button>
+                <button className={style.logoBtn}>Log In</button>
             </div>
         </form>
     )

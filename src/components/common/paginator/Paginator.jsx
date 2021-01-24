@@ -16,8 +16,8 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
 
     return (
         <div className={style.paginator}>
-            {portionNumber > 1 && <button className={style.btnNumb} onClick={() => {setPortionNumber(1)}}>&laquo;</button>}
-            {portionNumber > 1 && <button className={style.btnNumb} onClick={() => {setPortionNumber(portionNumber - 1)}}>&larr;</button>}
+            {portionNumber > 1 && <button className={style.toggle} onClick={() => {setPortionNumber(1)}}>&laquo;</button>}
+            {portionNumber > 1 && <button className={style.toggle} onClick={() => {setPortionNumber(portionNumber - 1)}}>&larr;</button>}
             <div className={style.btnNumb}>{pages
                 .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
                 .map(p => {
@@ -26,10 +26,10 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
                     }}>{p}</button>
                 })}</div>
             {portionCount > portionNumber &&
-            <button className={style.btnNumb} onClick={() => {
+            <button className={style.toggle} onClick={() => {
                 setPortionNumber(portionNumber + 1)
             }}>&rarr;</button>}
-            {portionCount > portionNumber && <button className={style.btnNumb} onClick={() => {setPortionNumber(portionCount)}}>&raquo;</button>}
+            {portionCount > portionNumber && <button className={style.toggle} onClick={() => {setPortionNumber(portionCount)}}>&raquo;</button>}
         </div>
     )
     }

@@ -1,8 +1,7 @@
 import React from 'react'
 import style from './MyPosts.module.css'
 import Post from './post/Post'
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validator";
+import {reduxForm} from "redux-form";
 import {createField, FormControl} from "../../common/formsControl/FormsControl";
 
 const MyPosts = React.memo(({addPost, postsData, ...props}) => {
@@ -31,11 +30,10 @@ const MyPosts = React.memo(({addPost, postsData, ...props}) => {
         </div>
     )
 })
-const maxLength15 = maxLengthCreator(15)
 const AddPostForm = ({handleSubmit}) => {
     return <form onSubmit={handleSubmit}>
         <div className={style.input}>
-            {createField('textarea', "Your news...", 'newPostText', FormControl, [required, maxLength15], )}
+            {createField('textarea', "Your news...", 'newPostText', FormControl)}
         </div>
         <div>
             <button>Add News</button>

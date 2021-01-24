@@ -2,34 +2,19 @@
   display: grid;
   grid-template-columns: 2fr 10fr;
   grid-area: header;
-  /*background-color: #30c3f0;*/
 }
-.logo {
-  background-image: url(https://kitenation.com/wp-content/uploads/2019/03/duotone-squarelogo-1.jpg);
-  background-position: left;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 11.8vh;
-  margin: 0;
-}
-/*.background {
-  background-image: url(https://www.duotonesports.com/fileadmin/user_upload/duotone_kiteboarding_kites_overview_2021_v2.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 11.8vh;
-  margin: 0;
-}*/
 .logoBtn {
 position: absolute;
   right: 10px;
   top: 10px;
 }
+.logoBtn img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .loginBlock {
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  opacity: .6;
+display: none;
 }
 .loginBlock:hover {
   opacity: 1;

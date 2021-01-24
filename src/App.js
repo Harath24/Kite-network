@@ -4,7 +4,6 @@ import {Route} from 'react-router-dom'
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import Friends from "./components/friends/Friends";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import NavbarContainer from "./components/navbar/NavbarContainer";
 import UsersContainer from "./components/users/UsersContainer";
@@ -39,7 +38,7 @@ class App extends React.Component {
                     <Route path={'/news'} render={News}/>
                     <Route path={'/music'} render={Music}/>
                     <Route path={'/settings'} render={Settings}/>
-                    <Route path={'/friends'} render={() => <Friends/>}/>
+                    {/*<Route path={'/friends'} render={() => <Friends/>}/>*/}
                 </div>
             </div>
         );

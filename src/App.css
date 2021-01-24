@@ -4,13 +4,13 @@
   height: 100%;
   margin: 0 auto;
   grid-template-areas:
-    'header header'
+    'nav header'
     'nav content';
   grid-template-rows: 90px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
-  background-image: url(https://static.scientificamerican.com/sciam/cache/file/30647AC1-B772-4607-BF3C3D43456E7103_source.jpg);
-  background-size: 100%;
+  background: linear-gradient(rgba(52, 152, 219,0.5),rgba(41, 128, 185,0.7), rgba(230, 126, 34,0.5), rgba(211, 84, 0,0.7));
+
 }
 .app-wrapper-content {
   grid-area: content;
@@ -21,7 +21,7 @@ button {
   display: block;
   border: 1px solid black;
   border-radius: 2px;
-  font-weight: 500;
+  font-weight: bold;
   background: transparent;
   color: #000;
   opacity: .6;
