@@ -71,11 +71,11 @@
     transition: .2s;
 }
 .checkbox input:checked + .checkbox__text:before {
-    background: #77b1d7;
+    background: #00a9c6;
 }
 .checkbox input:checked + .checkbox__text:after {
     left: 26px;
 }
 .checkbox input:focus + .checkbox__text:before {
-    box-shadow: inset 0 2px 3px rgba(0,0,0,.2), 0 0 0 3px rgba(0,169,198, 0.7);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.2), 0 0 0 3px rgba(9,164,198, 0.7);
 }
