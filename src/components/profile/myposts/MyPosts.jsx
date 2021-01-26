@@ -4,7 +4,7 @@ import Post from './post/Post'
 import {reduxForm} from "redux-form";
 import {createField, FormControl} from "../../common/formsControl/FormsControl";
 
-const MyPosts = React.memo(({addPost, postsData, ...props}) => {
+const MyPosts = React.memo(({addPost, postsData}) => {
     let postsElements = postsData.map(post => <Post messages={post.post} likes={post.likesCounter} id={post.id}
                                                           key={post.id}/>)
     /*    let newPostElement = React.createRef();

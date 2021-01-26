@@ -46,6 +46,9 @@ export const profileAPI = {
     },
     updateStatus(status) {
        return instance.put(`profile/status/`, {status: status})
+    },
+    updateAvaImage(image) {
+        return instance.put(`profile/photo/`, {image: image})
     }
 }
 export const authAPI = {

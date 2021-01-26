@@ -10,3 +10,14 @@
 font-size: larger;
     font-weight: bold;
 }
+.statusBtn {
+    margin: 10px 0;
+}
+.statusInput {
+    border-radius: 2px;
+    background: transparent;
+    border: 1px solid #555;
+    color: #000;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+}

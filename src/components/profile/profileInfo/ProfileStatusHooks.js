@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
+import style from './ProfileInfo.module.css'
 
 
 const ProfileStatusHooks = (props) => {
 
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
-    useEffect( () => {
+    useEffect(() => {
         setStatus(props.status)
-    }, [props.status] )
+    }, [props.status])
     const activateEditMode = () => {
         setEditMode(true)
     }
@@ -25,16 +26,16 @@ const ProfileStatusHooks = (props) => {
             <div>
                 <span>{props.status || 'No Status'}</span>
                 <div>
-                    <button onClick={activateEditMode}>Change Status</button>
+                    <button className={style.statusBtn} onClick={activateEditMode}>Change Status</button>
                 </div>
             </div>
 
             }
             {editMode &&
             <div>
-                <input onChange={onStatusChange} value={status} autoFocus={true} />
+                <input className={style.statusInput} onChange={onStatusChange} value={status} autoFocus={true}/>
                 <div>
-                    <button onClick={updateStatus}>Update Status</button>
+                    <button className={style.statusBtn} onClick={updateStatus}>Update Status</button>
                 </div>
             </div>
             }

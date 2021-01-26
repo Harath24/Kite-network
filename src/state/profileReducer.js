@@ -6,6 +6,8 @@ const DELETE_POST = 'DELETE_POST';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const SET_USER_AVA_IMAGE = 'SET_USER_AVA_IMAGE';
+
 let initialState = {
     postsData: [
         {id: 1, post: 'New Post', likesCounter: 10},
@@ -35,6 +37,10 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state, status: action.status
             }
+        case SET_USER_AVA_IMAGE:
+            return {
+                ...state, image: action.image
+            }
         default:
             return state;
     }
@@ -44,6 +50,7 @@ export const deletePost = (id) => ({type: DELETE_POST , id})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+export const setUserAvaImage = (image) => ({type: SET_USER_AVA_IMAGE, image})
 
 export const getUserProfile = (userId) => async (dispatch) => {
       let response = await usersAPI.getProfile(userId);
@@ -58,5 +65,11 @@ export const updateStatus = (status) => async (dispatch) => {
                 if(response.data.resultCode !== 1 ){
                 dispatch(setUserStatus(status))
             }
+}
+export const updateAvaImage = (image) => async (dispatch) => {
+    let response = await profileAPI.updateAvaImage(image)
+    if(response.data.resultCode !== 1 ){
+        dispatch(setUserAvaImage(image))
+    }
 }
 export default profileReducer;
