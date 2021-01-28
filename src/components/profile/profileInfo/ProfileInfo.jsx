@@ -14,14 +14,13 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner,updateAvaImage, ...
             updateAvaImage(e.target.files[0])
         }
     }
-
     return (
         <div>
             <div>
                 <div className={style.description}>
-                    <div><img className={style.avaImg} alt='ava'
-                              src={profile.photos.large != null ? profile.photos.large : userPhoto}/>
-                        {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
+                    <div><label for="ava"><img className={style.avaImg} alt='ava'
+                                               src={profile.photos.large != null ? profile.photos.large : userPhoto}/></label>
+                        {isOwner && <input type="file" className={style.avaUpload} id='ava' onChange={onMainPhotoSelected} />}
                     </div>
                     <div className={style.fullName}>
                         {profile.fullName}

@@ -21,3 +21,9 @@ font-size: larger;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
 }
+.avaUpload {
+    display: none;
+}
+label {
+    cursor: pointer;
+}
