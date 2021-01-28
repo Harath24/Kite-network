@@ -1,11 +1,16 @@
 import React from 'react'
 import style from './Post.module.css'
+import userPhoto from "../../../../assets/images/users.png";
+import Preloader from "../../../common/preloader/preloader";
 
-const Post = ({messages, likes, ...props}) => {
+const Post = ({messages, likes, profile, ...props}) => {
+    if (!profile) {
+        return <Preloader/>
+    }
     return (
         <div className={style.item}>
             <div><img alt="avatar" className={`${style.item} ${style.ava}`}
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsyMtFEP1wMKU3ywZzbDLobsR9yfB3PnHNHQ&usqp=CAU"/>
+                      src={profile.photos.small || userPhoto}/>
                 {messages}
             </div>
             <div><span><a href="#s"><img alt="likes" className={`${style.item} ${style.like}`}

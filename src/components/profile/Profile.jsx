@@ -3,12 +3,12 @@ import ProfileInfo from "./profileInfo/ProfileInfo";
 import MyPostsContainer from "./myposts/MyPostsContainer";
 import style from '../profile/Profile.module.css'
 
-const Profile = ({profile, status, updateStatus, store}) => {
+const Profile = ({profile, status, updateStatus, store, isOwner, updateAvaImage,}) => {
     return (
       <div className={style.profile}>
           <div>
-              <ProfileInfo profile={profile} status={status} updateStatus={updateStatus} />
-              <MyPostsContainer store={store}/>
+              <ProfileInfo isOwner={isOwner} profile={profile} status={status} updateStatus={updateStatus} updateAvaImage={updateAvaImage} />
+              <MyPostsContainer store={store} profile={profile}/>
           </div>
 
       </div>

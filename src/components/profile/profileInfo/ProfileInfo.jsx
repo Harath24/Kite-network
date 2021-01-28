@@ -5,16 +5,23 @@ import ProfileStatusHooks from "./ProfileStatusHooks";
 import userPhoto from '../../../assets/images/users.png'
 
 
-const ProfileInfo = ({profile, status, updateStatus, ...props}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner,updateAvaImage, ...props}) => {
     if (!profile) {
         return <Preloader/>
     }
+    const onMainPhotoSelected = (e) => {
+        if(e.target.files.length) {
+            updateAvaImage(e.target.files[0])
+        }
+    }
+
     return (
         <div>
             <div>
                 <div className={style.description}>
                     <div><img className={style.avaImg} alt='ava'
                               src={profile.photos.large != null ? profile.photos.large : userPhoto}/>
+                        {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
                     </div>
                     <div className={style.fullName}>
                         {profile.fullName}

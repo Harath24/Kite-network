@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
             }
         case SET_USER_AVA_IMAGE:
             return {
-                ...state, image: action.image
+                ...state, profile: {...(state.profile), photos: action.image}
             }
         default:
             return state;
@@ -69,7 +69,7 @@ export const updateStatus = (status) => async (dispatch) => {
 export const updateAvaImage = (image) => async (dispatch) => {
     let response = await profileAPI.updateAvaImage(image)
     if(response.data.resultCode !== 1 ){
-        dispatch(setUserAvaImage(image))
+        dispatch(setUserAvaImage(response.data.data.photos))
     }
 }
 export default profileReducer;
