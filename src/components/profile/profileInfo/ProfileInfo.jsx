@@ -5,7 +5,7 @@ import ProfileStatusHooks from "./ProfileStatusHooks";
 import userPhoto from '../../../assets/images/users.png'
 
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner,updateAvaImage, ...props}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner,updateAvaImage, userId, ...props}) => {
     if (!profile) {
         return <Preloader/>
     }
@@ -18,14 +18,14 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner,updateAvaImage, ...
         <div>
             <div>
                 <div className={style.description}>
-                    <div><label for="ava"><img className={style.avaImg} alt='ava'
+                    <div><label htmlFor="ava"><img className={style.avaImg} alt='ava'
                                                src={profile.photos.large != null ? profile.photos.large : userPhoto}/></label>
                         {isOwner && <input type="file" className={style.avaUpload} id='ava' onChange={onMainPhotoSelected} />}
                     </div>
                     <div className={style.fullName}>
                         {profile.fullName}
                     </div>
-                    <ProfileStatusHooks status={status} updateStatus={updateStatus}/>
+                    <ProfileStatusHooks status={status} updateStatus={updateStatus} userId={userId}/>
                     <div>
                         {profile.lookingForAJobDescription}
                     </div>

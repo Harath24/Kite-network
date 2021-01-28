@@ -36,7 +36,7 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <Profile  {...this.props} isOwner={!this.props.match.params.userId} profile={this.props.profile}
+            <Profile  {...this.props} userId={this.props.match.params.userId} isOwner={!this.props.match.params.userId} profile={this.props.profile}
                       status={this.props.status} updateStatus={this.props.updateStatus} updateAvaImage={this.props.updateAvaImage}/>
 
         )

@@ -4,6 +4,7 @@ import style from './ProfileInfo.module.css'
 
 const ProfileStatusHooks = (props) => {
 
+
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
     useEffect(() => {
@@ -19,17 +20,15 @@ const ProfileStatusHooks = (props) => {
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value)
     }
-
     return (
         <div>
             {!editMode &&
             <div>
                 <span>{props.status || 'No Status'}</span>
-                <div>
+                {props.userId === undefined && <div>
                     <button className={style.statusBtn} onClick={activateEditMode}>Change Status</button>
-                </div>
+                </div>}
             </div>
-
             }
             {editMode &&
             <div>
