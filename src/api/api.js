@@ -51,10 +51,12 @@ export const profileAPI = {
         const formData = new FormData()
         formData.append('image', image)
         return instance.put(`profile/photo/`, formData)
+    },
+    saveProfile(profile) {
+        return instance.put(`profile/`, profile)
     }
 }
 export const authAPI = {
-
     me() {
         return (
             instance.get(`auth/me`)

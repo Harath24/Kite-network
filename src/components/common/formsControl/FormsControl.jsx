@@ -7,11 +7,11 @@ export const FormControl = ({input, meta:{touched, error}, text, ...props}) => {
     const hasError = touched && error
     return (
         <div className={style.formControl + ' ' + (hasError ? style.errors : '')}>
-            <div>
+            <div> {/*Продумать как оптимизировать код ниже, т.к. это говнокод*/}
                 {(props.typefield !== 'checkbox' && <props.typefield {...input} {...props} />) ||
                 <label className={style.checkbox}>
-                    <input type="checkbox"/>
-                    <div className={style.checkbox__text}>{text}</div>
+                    <input type="checkbox" {...input} {...props}/>
+                    <b className={style.checkbox__text}>{text}</b>
                 </label>}
                 {hasError && <span>{error}</span>}
             </div>

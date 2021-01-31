@@ -27,3 +27,6 @@ font-size: larger;
 label {
     cursor: pointer;
 }
+.contacts {
+    padding-left: 10px;
+}

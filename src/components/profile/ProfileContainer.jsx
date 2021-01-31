@@ -3,10 +3,10 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {
     getUserProfile,
-    getUserStatus,
+    getUserStatus, saveProfile,
     toggleIsFetching,
     updateAvaImage,
-    updateStatus
+    updateStatus,
 } from "../../state/profileReducer";
 import {withRouter} from "react-router";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -37,7 +37,7 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <Profile  {...this.props} userId={this.props.match.params.userId} isOwner={!this.props.match.params.userId} profile={this.props.profile}
-                      status={this.props.status} updateStatus={this.props.updateStatus} updateAvaImage={this.props.updateAvaImage}/>
+                      status={this.props.status} updateStatus={this.props.updateStatus} updateAvaImage={this.props.updateAvaImage} saveProfile={this.props.saveProfile}/>
 
         )
     }
@@ -63,7 +63,7 @@ let mapStateToProps = (state) => ({
 /*let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 export default connect(mapStateToProps, {setUserProfile, toggleIsFetching})(WithUrlDataContainerComponent);*/
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getUserStatus, updateStatus, toggleIsFetching, updateAvaImage}),
+    connect(mapStateToProps, {getUserProfile, getUserStatus, updateStatus, toggleIsFetching, updateAvaImage, saveProfile}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

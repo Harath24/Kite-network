@@ -24,7 +24,7 @@ const ProfileStatusHooks = (props) => {
         <div>
             {!editMode &&
             <div>
-                <span>{props.status || 'No Status'}</span>
+                <b>Status</b>: <span>{props.status || 'No Status'}</span>
                 {props.userId === undefined && <div>
                     <button className={style.statusBtn} onClick={activateEditMode}>Change Status</button>
                 </div>}

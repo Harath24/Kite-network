@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 
 const ADD_POST = 'ADD-POST';
@@ -70,6 +71,16 @@ export const updateAvaImage = (image) => async (dispatch) => {
     let response = await profileAPI.updateAvaImage(image)
     if(response.data.resultCode !== 1 ){
         dispatch(setUserAvaImage(response.data.data.photos))
+    }
+}
+export const saveProfile = (profile) => async (dispatch,getState) => {
+    const userId = getState().auth.id
+    const response = await profileAPI.saveProfile(profile)
+    if(response.data.resultCode !== 1 ){
+        dispatch(getUserProfile(userId))
+    } else {
+        dispatch(stopSubmit('editProfile', {_error: response.data.messages}))
+        return Promise.reject(response.data.messages)
     }
 }
 export default profileReducer;
