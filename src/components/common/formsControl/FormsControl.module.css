@@ -31,9 +31,13 @@
     width: 100vh;
     margin: 5px 0;
     padding: 5px;
+    font-weight: bold;
 }
 .logoBtn {
     margin: 1rem 0;
+}
+.captchaImg {
+    margin-top: 20px;
 }
 .checkbox input {
     position: absolute;
