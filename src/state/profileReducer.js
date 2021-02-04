@@ -79,7 +79,9 @@ export const saveProfile = (profile) => async (dispatch,getState) => {
     if(response.data.resultCode !== 1 ){
         dispatch(getUserProfile(userId))
     } else {
-        dispatch(stopSubmit('editProfile', {_error: response.data.messages}))
+        let errors = response.data.messages[0].map(el => el.match(/Contacts->(\w+)/)[1].toLocaleLowerCase())
+        console.log(errors)
+            dispatch(stopSubmit('editProfile',  {'contacts':{[errors] : response.data.messages}}))
         return Promise.reject(response.data.messages)
     }
 }

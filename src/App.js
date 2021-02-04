@@ -19,7 +19,8 @@ import Preloader from "./components/common/preloader/preloader";
 const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/users/UsersContainer'));
-const Login = React.lazy(() => import('./components/login/Login'));
+//const Login = React.lazy(() => import('./components/login/Login'));
+const LoginFormik = React.lazy(() => import('./components/login/LoginFormik'));
 const News = React.lazy(() => import('./components/news/News'));
 const Music = React.lazy(() => import('./components/music/Music'));
 const Settings = React.lazy(() => import('./components/settings/Settings'));
@@ -43,7 +44,7 @@ class App extends React.Component {
                     <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
                     <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
                     <Route path={'/users'} render={() => <UsersContainer/>}/>
-                    <Route path={'/login'} render={() => <Login/>}/>
+                    <Route path={'/login'} render={() => <LoginFormik/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>

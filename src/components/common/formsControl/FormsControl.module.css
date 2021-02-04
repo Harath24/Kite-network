@@ -21,7 +21,7 @@
 }
 .formControl.errors input,
 .formControl.errors textarea {
-    border: solid red 2px;
+    border: solid red 3px;
 }
 .formControl.errors span {
     color: red;
