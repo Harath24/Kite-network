@@ -1,24 +1,37 @@
+type InitialStateType = {
+    dialogsData: Array<{
+        id: number,
+        name: string,
+        url: string}>
+    messagesData: Array<{
+        id: number,
+        message: string}>
+}
+type AddNewMessageActionType = {
+    type: typeof ADD_NEW_MESSAGE
+    newMessageText: string
+}
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-let initialState = {
+const initialState: InitialStateType = {
     dialogsData: [
         {
-            id: '1',
+            id: 1,
             name: 'Leo',
             url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4lRdbb-GfTkirwRnibu2vO_xkDv-q_ce8fA&usqp=CAU'
         },
         {
-            id: '2',
+            id: 2,
             name: 'Chika',
             url: 'https://i.pinimg.com/736x/3d/b7/7d/3db77df2a496f33b09c1861acc7a7b1c.jpg'
         },
-        {id: '3', name: 'Bro', url: 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
+        {id: 3, name: 'Bro', url: 'https://www.worldphoto.org/sites/default/files/default-media/Piercy.jpg'},
         {
-            id: '4',
+            id: 4,
             name: 'Alex',
             url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9HvhUfcjWOFaISAirSCG2xfdfOMONoC7-FA&usqp=CAU'
         },
         {
-            id: '5',
+            id: 5,
             name: 'Demon',
             url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoYg_loo5GQu9tChS6_zc24E4zgToC6-WAdQ&usqp=CAU'
         }
@@ -31,14 +44,14 @@ let initialState = {
     ]
 }
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action: AddNewMessageActionType): InitialStateType => {
     switch (action.type) {
-        case 'ADD-NEW-MESSAGE':
-            return {...state, messagesData: [...state.messagesData, {id:5, message: action.newMessageText}]};
+        case ADD_NEW_MESSAGE:
+            return {...state, messagesData: [...state.messagesData, {id:Math.random(), message: action.newMessageText}]};
         default:
             return state;
     }
 }
-export const addNewMessageActionCreator = (newMessageText) => ({type: ADD_NEW_MESSAGE, newMessageText})
+export const addNewMessageActionCreator = (newMessageText: string):AddNewMessageActionType => ({type: ADD_NEW_MESSAGE, newMessageText})
 
 export default dialogsReducer;

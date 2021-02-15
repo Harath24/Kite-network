@@ -4,7 +4,8 @@ import Preloader from "../../common/preloader/preloader";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 import userPhoto from '../../../assets/images/users.png'
 import ProfileData from "./ProfileData";
-import ProfileDataFormReduxForm from "./ProfileDataForm";
+//import ProfileDataFormFormik from "./ProfileDataFormFormik";
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvaImage, userId, saveProfile, ...props}) => {
     const [editMode, setEditMode] = useState(false)
@@ -35,7 +36,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvaImage, us
                     </div>
                     <ProfileStatusHooks status={status} updateStatus={updateStatus} userId={userId}/>
                     {editMode
-                        ? <ProfileDataFormReduxForm initialValues={profile} profile={profile} isOwner={isOwner} onSubmit={onSubmit}/>
+                        ? <ProfileDataForm initialValues={profile} profile={profile} isOwner={isOwner} onSubmit={onSubmit}/>
                         : <ProfileData goToEditMode={()=>setEditMode(true)} profile={profile} isOwner={isOwner}/>
                     }
                 </div>

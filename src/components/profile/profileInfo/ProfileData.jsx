@@ -9,6 +9,9 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
             <b>My professional skills</b>: {profile.lookingForAJobDescription}
         </div>
         <div>
+            <b>About me</b>: {profile.aboutMe}
+        </div>
+        <div>
             <b>My contacts</b>: {Object.keys(profile.contacts).map(key => {
             return <Contacts contactTitle={key} contactValue={profile.contacts[key]} key={key}/>
         })}

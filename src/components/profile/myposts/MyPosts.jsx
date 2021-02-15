@@ -19,6 +19,7 @@ const MyPosts = React.memo(({addPost, postsData, profile}) => {
         }*/
     let addNewPost = (values) => {
         addPost(values.newPostText)
+        values.newPostText = ''
     }
     return (
         <div className={style.profile}>

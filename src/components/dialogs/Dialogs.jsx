@@ -50,6 +50,7 @@ const Dialogs = (props) => {
     let addNewMessage = (values) => {
         //props.dispatch(addNewMessageActionCreator());
         props.addNewMessage(values.newMessageText)
+        values.newMessageText = ''
     }
 
     return (
